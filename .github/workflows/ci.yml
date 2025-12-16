@@ -1,23 +1,19 @@
-name: Basic CI
+name: Simple App CI/CD
 
 on:
   push:
     branches: [ main ]
-  pull_request:
 
 jobs:
-  check:
+  build-and-run:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Build docker image
-        run: docker build -t test-ci .
+        run: docker build -t simple-app .
 
-      - name: Show repo files
-        run: ls -la
-
-      - name: CI success
-        run: echo "CI pipeline is working"
+      - name: Run container
+        run: docker run simple-app
