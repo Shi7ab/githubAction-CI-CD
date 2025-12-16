@@ -1,3 +1,4 @@
-FROM alpine:3.19
-
-CMD ["echo", "Docker image built successfully"]
+FROM python:3.12-alpine
+WORKDIR /app
+COPY app.py .
+CMD ["python", "app.py"]
